@@ -1,0 +1,49 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+  </div>
+  <div class="typeInputHere"></div>
+</body>
+<script src="main.js"></script>
+<script type="text/jsx">
+
+var React = require('react');
+var type = React.createClass({
+  render: function() {
+    return <div className="input-group">
+  <input type="text" className="form-control pswrd-usr-input-choice" placeholder={this.props.title} aria-describedby="basic-addon1">
+</div>
+  }
+});
+
+var combined = React.createClass({
+  render: function() {
+    var list = this.props.inputTypes.map(function(inputProps) {
+      return <type {...inputProps} />
+    });
+
+    return <div>
+      {list}
+    </div>
+  }
+});
+
+var options = {
+  inputTypes: [{
+    title: 'EMAIL',
+    photo: './Images/username-icon/group-2.png'
+  },{
+    title: 'PASSWORD',
+    photo: './Images/password-icon/group.png'
+  }]
+};
+
+var element = React.createElement(combined, options);
+React.render(element, document.querySelector('typeInputHere'));
+</script>
